@@ -110,12 +110,15 @@ if __name__ == "__main__":
     radiff = data['RA'] - ra
     decdiff = data['Dec'] - dec
 
+    radiff *= 3600
+    decdiff *= 3600
+
     print "min/max ra offsets", radiff.min(), radiff.max()
     print "min/max dec offsets", decdiff.min(), decdiff.max()
 
     plt.figure()
     plt.plot(radiff, decdiff, 'k.')
-    plt.xlabel('Difference in RA (deg)')
-    plt.ylabel('Difference in Dec (deg)')
+    plt.xlabel('Difference in RA (arcsec)')
+    plt.ylabel('Difference in Dec (arcsec)')
 
     plt.show()
