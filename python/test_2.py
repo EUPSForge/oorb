@@ -1,3 +1,4 @@
+import os
 import subprocess
 import numpy as np
 import matplotlib.pyplot as plt
@@ -73,7 +74,8 @@ if __name__ == "__main__":
     oorbArray = pack_oorbArray(orbits)
 
     # set up oorb.
-    oo.pyoorb.oorb_init(ephemeris_fname="")
+    ephfile = os.path.join(os.getenv('OORB_DATA'), 'de430.dat')
+    oo.pyoorb.oorb_init(ephemeris_fname=ephfile)
 
     # set observatory code
     obscode = 807
@@ -121,4 +123,4 @@ if __name__ == "__main__":
     plt.xlabel('Difference in RA (arcsec)')
     plt.ylabel('Difference in Dec (arcsec)')
 
-    plt.show()
+    #plt.show()

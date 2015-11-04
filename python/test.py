@@ -29,14 +29,15 @@
 #
 
 #!/usr/bin/env python
-
+import os
 import pyoorb
 import numpy
 
 if __name__ == "__main__":
     print "starting..."
     print "calling oorb_init():"
-    pyoorb.pyoorb.oorb_init(error_verbosity=5, info_verbosity=5)
+    ephfile = os.path.join(os.getenv('OORB_DATA'), 'de430.dat')
+    pyoorb.pyoorb.oorb_init(ephemeris_fname=ephfile, error_verbosity=5, info_verbosity=5)
     #orb is id, 6 elements, epoch_mjd, H, G, element type index
     #keplerian appears to be element type index 3
     #orbits = numpy.array([0.,1.,2.,3.,4.,5.,6.,5373.,1.,1.,3.])

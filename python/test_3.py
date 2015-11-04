@@ -24,6 +24,7 @@
 #
 
 #!/usr/bin/env python
+import os
 import numpy as np
 import pylab
 from itertools import repeat
@@ -101,7 +102,8 @@ if __name__ == "__main__":
     t = time.time()
     print "Starting oorb ephemeris generation timing test"
     dt, t = dtime(t)
-    oo.pyoorb.oorb_init(error_verbosity=5, info_verbosity=5)
+    ephfile = os.path.join(os.getenv('OORB_DATA'), 'de430.dat')
+    oo.pyoorb.oorb_init(ephemeris_fname=ephfile, error_verbosity=5, info_verbosity=5)
     dt, t = dtime(t)
     print "calling oorb_init() took %f s" %(dt)
     # read in orbit DES file
